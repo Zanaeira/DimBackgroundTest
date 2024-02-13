@@ -19,10 +19,11 @@ struct ContentView: View {
 	@State private var dimBackground = false
 
 	var body: some View {
-		VStack {
+		VStack(spacing: 36) {
 			Button("Drawer 1") { withAnimation { dimBackground = true }; openDrawer = .one }
 			Button("Drawer 2") { withAnimation { dimBackground = true }; openDrawer = .two }
 		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.teal)
 		.dimBackground($dimBackground)
 		.sheet(item: $openDrawer, onDismiss: { withAnimation { dimBackground = false } }) { drawer in
