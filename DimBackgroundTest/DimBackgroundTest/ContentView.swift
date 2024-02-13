@@ -60,6 +60,7 @@ struct DimBackground: ViewModifier {
 					Color.black.opacity(0.5)
 				}
 			}
+			.ignoresSafeArea()
 	}
 }
 
