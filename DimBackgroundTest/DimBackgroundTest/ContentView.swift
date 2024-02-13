@@ -23,12 +23,16 @@ struct ContentView: View {
 			Button("Drawer 1") { withAnimation { dimBackground = true }; openDrawer = .one }
 			Button("Drawer 2") { withAnimation { dimBackground = true }; openDrawer = .two }
 		}
+		.background(Color.teal)
 		.dimBackground($dimBackground)
 		.sheet(item: $openDrawer, onDismiss: { withAnimation { dimBackground = false } }) { drawer in
-			switch drawer {
-			case .one: DrawerOne()
-			case .two: DrawerTwo()
+			Group {
+				switch drawer {
+				case .one: DrawerOne()
+				case .two: DrawerTwo()
+				}
 			}
+			.presentationDetents([.medium])
 		}
 	}
 
